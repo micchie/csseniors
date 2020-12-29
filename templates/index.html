@@ -10,7 +10,7 @@
 
 
 {% block title %}
-CSSenior
+CSSeniors
 {% endblock %}
 
 
@@ -20,23 +20,41 @@ CSSenior
   <div class="row">
     <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
 
-      <h1 class="pt-5 pb-2">CSSenior</h1>
+      <h1 class="pt-5 pb-2">CSSeniors</h1>
 
       <p class="lead">
-This script shows the author's papers published in the venues listed in
-<a href="http://csrankings.org">CSRankings</a>, counting those which have been
-published since their first first-author paper in those venues.
-The rational of such a list is that the first authorship indicates the work is
+This webapp shows the papers of a given author that have been published at the venues listed in
+<a href="http://csrankings.org">CSRankings</a> (plus ICLR) since their
+first first-author paper.
+The rational of such a list is that the first authorship of a top-tier
+conference paper should indicate the work is
 driven and built by their own, which proves the experience to deserve some seniority.
-Since such a paper can be published later than others simply because of rejections,
-this script also considers those papers published in the previous calendar year.
+The output also includes papers published in the previous year of the
+first-author paper, which can be published later because of rejections.
       
       </p>
 
+      <p class="lead" style="font-size: 100%">
+      <span style="font-weight: bold">TL;DR</span>: 
+      Conferences can be added/removed using +/- followed by a conference
+      key (uai if the <a href="https://dblp.org">DBLP</a> entry is
+      https://dblp.org/db/conf/uai), like "John Smith +aistats +uai -aaai".
+      You can also remove all the conferences not selected by default in
+      CSRankings using "--" option, which is overwritten by "+" options.
+      When "+c" option is given, this app also lists senior co-authors (this
+      process takes a bit long as it issues a request to the DBLP website for
+      every co-author), which could be useful to guess the collaboration circle
+      of the author.
+
+      This app makes the best effort for accuracy, such as filtering out
+      short/workshop papers, applied data science track papers in KDD
+      (2018-2020), operational systems track papers in NSDI (2014-2016) and
+      experience papers in MOBICOM.
+      </p>
+	
       {{ wtf.quick_form(form) }}
 
       <p class="pt-5"><strong>{{ message }}</strong></p>
-
     </div>
   </div>
 </div>
