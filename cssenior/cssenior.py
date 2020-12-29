@@ -155,8 +155,8 @@ class CSSenior(object):
     @staticmethod
     def tweak_confs(l):
         l.extend(['iclr', 'ndss', 'cvpr', 'pvldb'])
-        for c in ['emsoft', 'rtas', 'rtss', 'iccad', 'dac']:
-            l.remove(c)
+        #for c in ['emsoft', 'rtas', 'rtss', 'iccad', 'dac']:
+        #    l.remove(c)
 
     @staticmethod
     def full_paper(conf, title, booktitle, pages, year, key):
