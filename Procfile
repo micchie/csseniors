@@ -1,1 +1,1 @@
-web: gunicorn app:cssenior --log-file -
+web: gunicorn app:app --log-file -
