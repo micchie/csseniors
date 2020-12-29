@@ -3,7 +3,7 @@ from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
-from cssenior import CSSenior
+from cssenior.cssenior import CSSenior
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'PAVouza4lX'
