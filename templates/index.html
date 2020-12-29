@@ -22,7 +22,16 @@ CSSenior
 
       <h1 class="pt-5 pb-2">CSSenior</h1>
 
-      <p class="lead">{{ readme }}</p>
+      <p class="lead">
+This script shows the author's papers published in the venues listed in
+<a href="http://csrankings.org">CSRankings</a>, counting those which have been
+published since their first first-author paper in those venues.
+The rational of such a list is that the first authorship indicates the work is
+driven and built by their own, which proves the experience to deserve some seniority.
+Since such a paper can be published later than others simply because of rejections,
+this script also considers those papers published in the previous calendar year.
+      
+      </p>
 
       {{ wtf.quick_form(form) }}
 

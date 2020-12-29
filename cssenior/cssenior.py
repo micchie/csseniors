@@ -54,6 +54,11 @@ class CSSenior(object):
         res = requests.get(query_base + query_author)
         res = res.json()['result']
         authors = []
+        if not 'hits' in res:
+            return
+        if not 'hit' in res['hits']:
+            return
+
         for h in res['hits']['hit']:
             author = [h['info']['author']]
             if 'aliases' in h['info']:
@@ -78,7 +83,7 @@ class CSSenior(object):
         # Count for each matching author
         #
         for author, pid in authors:
-            self.log(('\n### ', name, pid))
+            self.log((name, pid), author=True)
             count = False
             tmp = []
             for paper in reversed(papers):
@@ -112,8 +117,14 @@ class CSSenior(object):
                     tmp = []
                 self.log(d.values())
 
-    def log(self, msg):
-        self.msgs.append(msg)
+    def log(self, msg, author=False):
+        if author:
+            m = msg[0] + ' ({})'.format(msg[1])
+            self.msgs.append({'author':m})
+            return
+        msg = list(msg)
+        self.msgs.append({'paper':'{} {} {} {}'.format(msg[0],
+            ', '.join(msg[1]) + ',', msg[2], msg[3])})
 
     def getlog(self):
         return self.msgs
@@ -249,5 +260,5 @@ class CSSenior(object):
 
 if __name__ == '__main__':
     css = CSSenior(sys.argv[1])
-    for l in css.getlog():
-        print(*l)
+    for m in css.getlog():
+        print(m)
