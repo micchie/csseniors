@@ -1,1 +1,1 @@
-web: gunicorn cssenior.wsgi --log-file -
+web: gunicorn app:cssenior --log-file -
