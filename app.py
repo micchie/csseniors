@@ -24,17 +24,15 @@ def index():
     message = ""
     if form.validate_on_submit():
         formin = form.name.data
-        mm = False
+        mm = []
         if re.search('--', formin):
-            formin.replace('--', '')
-            mm = True
+            formin = formin.replace('--', '')
+            mm.append('--')
         name = re.split('[\+-]', formin)[0]
         args = [name]
         options = re.findall('[\+-].*?(?=[\+-]|$)', formin)
         options = [o.strip(' ') for o in options]
-        if mm:
-            options.append('--')
-        cssenior = CSSeniors(args + options)
+        cssenior = CSSeniors(args + options + mm)
         res = cssenior.getlog()
         res_html = ''
         for l in res:

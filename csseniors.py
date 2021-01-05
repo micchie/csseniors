@@ -278,10 +278,13 @@ class CSSeniors(object):
         # NSDI 2007 and before do not have pages
         if conf == 'iclr':
             return True
-        if conf == 'ndss':
+        elif conf == 'ndss':
             return True
-        if conf == 'nsdi':
+        elif conf == 'nsdi':
             if int(year) <= 2007:
+                return True
+        elif conf == 'cloud':
+            if int(year) == 2011 or int(year) == 2012:
                 return True
         elif conf == 'sosr':
             if int(year) == 2016:
