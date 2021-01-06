@@ -14,7 +14,7 @@ Since a paper can be published later than others because of rejections,
 this app also considers papers published in the
 previous year of the first-author paper.
 Webapp is also available at
-[http://csseniors.herokuapp.com](http://csseniors.herokuapp.com).
+[https://csseniors.herokuapp.com](https://csseniors.herokuapp.com).
 
 ### Options
 
