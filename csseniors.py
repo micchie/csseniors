@@ -49,22 +49,20 @@ class CSSeniors(object):
         else:
             self.confs, self.nodef_confs = CSSeniors.parse_csrankings()
             CSSeniors.tweak_confs(self.confs)
-            self.confs |= self.nodef_confs
-        add_confs = set() # overwrite '--' option
+            #self.confs |= self.nodef_confs
+        rem_confs = set() # overwrite '--' option
         for a in args:
             if re.match('\+c$', a):
                 countca = True
             elif re.match('\+\S\S+', a):
-                add_confs.add(a.lstrip('+'))
-            elif re.match('--$', a):
-                self.confs ^= self.nodef_confs
+                self.confs.add(a.lstrip('+'))
+            elif re.match('\+\+$', a):
+                self.confs |= self.nodef_confs
             elif re.match('-\S\S+', a):
-                noconf = a.lstrip('-')
-                if noconf in self.confs:
-                    self.confs.remove(noconf)
+                rem_confs.add(a.lstrip('-'))
             else:
                 name = a
-        self.confs |= add_confs
+        self.confs -= rem_confs
 
         #
         # Author list that matches the name
