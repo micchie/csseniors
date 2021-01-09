@@ -25,9 +25,9 @@ def index():
     if form.validate_on_submit():
         formin = form.name.data
         mm = []
-        if re.search('++', formin):
-            formin = formin.replace('++', '')
-            mm.append('++')
+        if re.search('--', formin):
+            formin = formin.replace('--', '')
+            mm.append('--')
         name = re.split('[\+-]', formin)[0]
         args = [name]
         options = re.findall('[\+-].*?(?=[\+-]|$)', formin)
