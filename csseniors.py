@@ -345,6 +345,9 @@ class CSSeniors(object):
                 return False
             if numpages < 10:
                 return False
+        elif conf == 'usenix':
+            if numpages < 10:
+                return False
         elif conf == 'sosr':
             if numpages < 9:
                 return False
