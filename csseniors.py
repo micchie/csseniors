@@ -51,7 +51,6 @@ class CSSeniors(object):
             CSSeniors.tweak_confs(self.confs)
             #self.confs |= self.nodef_confs
         rem_confs = set() # overwrite '--' option
-        name = ''
         for a in args:
             if re.match('\+c$', a):
                 countca = True
