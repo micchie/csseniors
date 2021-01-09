@@ -4,7 +4,7 @@
 python3 csseniors.py "First [M] Last" [+conf] [-conf] [--] [+c] 
 ```
 This script shows the papers of a given author that have been published at the venues listed in
-[CSRankings](http://csrankings.org) (plus ICLR and NDSS) since their
+[CSRankings](http://csrankings.org) (plus ICLR) since their
 first first-author paper.
 The rational of such a list is that the first authorship of a top-tier
 conference paper should indicate the work is
@@ -22,8 +22,7 @@ You can add/remove conferences using +/- followed by a conference
 key (uai if the DBLP entry is
 https://dblp.org/db/conf/uai), like "John Smith +aistats +uai -aaai".
 
-You can also add conferences not selected by default in CSRankings using "++"
-option, which is overwritten by - options.
+You can also remove all the conferences not selected by default in CSRankings using "--" option, which is overwritten by + options.
 
 When "+c" option is given, this app also lists senior co-authors (this
 process takes a bit long), which could be useful to guess the

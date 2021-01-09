@@ -24,7 +24,7 @@ CSSeniors
 
       <p class="lead">
 This webapp shows the papers of a given author that have been published at the venues listed in
-<a href="http://csrankings.org">CSRankings</a> (plus ICLR and NDSS) since their
+<a href="http://csrankings.org">CSRankings</a> (plus ICLR) since their
 first first-author paper.
 The rational of such a list is that the first authorship of a top-tier
 conference paper should indicate the work is
@@ -39,8 +39,8 @@ first-author paper, which can be published later because of rejections.
       Conferences can be added/removed using +/- followed by a conference
       key (uai if the <a href="https://dblp.org">DBLP</a> entry is
       https://dblp.org/db/conf/uai), like "John Smith +aistats +uai -aaai".
-      You can also add all the conferences not selected by default in
-      CSRankings using "++" option, which is overwritten by "-" options.
+      You can also remove all the conferences not selected by default in
+      CSRankings using "--" option, which is overwritten by "+" options.
       When "+c" option is given, this app also lists senior co-authors (this
       process takes a bit long as it issues a request to the DBLP website for
       every co-author), which could be useful to guess the collaboration circle
