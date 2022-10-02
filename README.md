@@ -14,7 +14,7 @@ Since a paper can be published later than others because of rejections,
 this app also considers papers published in the
 previous year of the first-author paper.
 Webapp is also available at
-[http://www.csseniors.org](http://www.csseniors.org).
+[https://csseniors.onrender.com/](https://csseniors.onrender.com/)
 
 ### Options
 
