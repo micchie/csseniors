@@ -4,10 +4,8 @@
 python3 csseniors.py "First [M] Last" [+conf] [-conf] [--] [+c] 
 ```
 This script shows the papers of a given author that have been published at the venues listed in
-[CSRankings](http://csrankings.org) (plus ICLR) since their
-first first-author paper.
-The rational of such a list is that the first authorship of a top-tier
-conference paper should indicate the work is
+[CSRankings](http://csrankings.org) since their first first-author paper.
+The first authorship of a top-tier conference paper should indicate the work is
 driven and built by their own, which proves the experience to deserve some
 seniority.
 Since a paper can be published later than others because of rejections,
