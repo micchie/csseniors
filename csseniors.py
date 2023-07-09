@@ -31,6 +31,8 @@ import sys
 import re
 import urllib.request as urlreq
 import requests
+import pickle # debugging
+from pathlib import Path
 
 class Paper(object):
     def __init__(self, data):
@@ -69,12 +71,21 @@ class CSSeniors(object):
         #
         # Author list that matches the name
         #
+        a = '%20'.join(name.split())
         query_base = 'https://dblp.org/search/'
-        query_author = 'author/api?q={}&format=json'.format(
-                '%20'.join(name.split()))
-        res = requests.get(query_base + query_author)
+        query_author = 'author/api?q={}&format=json'.format(a)
+        a += '_0'
+        if not Path(a).exists():
+            res = requests.get(query_base + query_author)
+            with open(Path(a), 'wb') as f:
+                pickle.dump(res, f)
+        else:
+            print('reading cache {} for author list'.format(a))
+            with open(Path(a), 'rb') as f:
+                res = pickle.load(f)
         if not 'result' in res.json():
             return
+        print(res.json()['result'])
         res = res.json()['result']
         authors = []
         if not 'hits' in res:
@@ -94,9 +105,17 @@ class CSSeniors(object):
         #
         # Paper list that includes the name
         #
-        query_publ = 'publ/api?q={}&format=json&h=1500'.format(
-                '%20'.join(name.split()))
-        res = requests.get(query_base + query_publ)
+        a = '%20'.join(name.split())
+        query_publ = 'publ/api?q={}&format=json&h=1500'.format(a)
+        a += '_1'
+        if not Path(a).exists():
+            res = requests.get(query_base + query_publ)
+            with open(Path(a), 'wb') as f:
+                pickle.dump(res, f)
+        else:
+            print('reading cache {} for paper list'.format(a))
+            with open(Path(a), 'rb') as f:
+                res = pickle.load(f)
         res = res.json()['result']
 
         papers = []
@@ -190,6 +209,7 @@ class CSSeniors(object):
         confs = set()
         nodef_confs = set()
         confline = 'https://dblp.org/db/conf/'
+        confline2 = 'https://csconferences.org/#'
         page = urlreq.urlopen('http://csrankings.org')
         nodef = False
         comment = False
@@ -245,6 +265,11 @@ class CSSeniors(object):
                     confs.add( s.split(confline)[1].split('/')[0] )
                 else:
                     nodef_confs.add( s.split(confline)[1].split('/')[0] )
+            elif re.search(confline2, s):
+                if not nodef:
+                    confs.add( s.split(confline2)[1].split('"')[0].lower() )
+                else:
+                    nodef_confs.add( s.split(confline2)[1].split('"')[0].lower() )
         return confs, nodef_confs
 
     @staticmethod
