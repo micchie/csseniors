@@ -5,8 +5,8 @@ python3 csseniors.py "First [M] Last" [+conf] [-conf] [--] [+c]
 ```
 This script shows the papers of a given author that have been published at the venues listed in
 [CSRankings](http://csrankings.org) since their first first-author paper.
-The first authorship of a top-tier conference paper should indicate the work is
-driven and built by their own, which proves the experience to deserve some
+The first authorship of a top-tier conference paper means the big technical work is
+done mostly by their own, which proves the experience to deserve 
 seniority.
 Since a paper can be published later than others because of rejections,
 this app also considers papers published in the
